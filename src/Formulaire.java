@@ -27,7 +27,7 @@ public class Formulaire extends JFrame {
         txtLogin.setText("");
         txtPassword.setText("");
 
-        String sql = "INSERT INTO utilisateur(nom, prenom, email, login, password) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO utilisateurs(nom, prenom, email, login, password) VALUES (?, ?, ?, ?, ?)";
 
         // si nom, email, login, password ne sont pas vide, ajoute les données dans la base
         if(nom.isEmpty() || email.isEmpty() || login.isEmpty() || password.isEmpty()){
@@ -51,7 +51,7 @@ public class Formulaire extends JFrame {
 // Charger l'utilisateur depuis la base de données
     private void chargerUtilisateurs() {
         listeTableau.setRowCount(0);
-        String sql = "SELECT id, nom, prenom, email, login FROM utilisateur";
+        String sql = "SELECT id, nom, prenom, email, login FROM utilisateurs";
         try (Connection conn = ConnexionDB.getConnection();
              Statement st = conn.createStatement();
              ResultSet rs = st.executeQuery(sql)) {
